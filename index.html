@@ -61,7 +61,7 @@
 	
 	function init() {
 
-		var myContainer = new PIXI.DisplayObjectContainer();
+		window.myContainer = new PIXI.DisplayObjectContainer();
 		// create an new instance of a pixi stage
 		// var stage = new PIXI.Stage();
 		var stage = new PIXI.Stage(0x66FF99);
@@ -91,19 +91,125 @@
 		text.position.x = 200;
 		text.position.y = 200;
 
+		var texture = PIXI.Texture.fromImage("lined_paper.png")
+
 		var tile_size = 200
 		var tile_y_count = Math.round(window.innerHeight/tile_size) + 2
 		var tile_x_count = Math.round(window.innerWidth/tile_size) + 2
 
-		var texture = PIXI.Texture.fromImage("lined_paper.png")
+		tiles = {
+			"0x0":texture,
+			"0x1":texture,
+			"0x2":texture,
+			"0x3":texture,
+			"0x4":texture,
+			"0x5":texture,
+			"0x6":texture,
+			"0x7":texture,
+			"0x8":texture,
+			"0x9":texture,
+			"1x0":texture,
+			"1x1":texture,
+			"1x2":texture,
+			"1x3":texture,
+			"1x4":texture,
+			"1x5":texture,
+			"1x6":texture,
+			"1x7":texture,
+			"1x8":texture,
+			"1x9":texture,
+			"2x0":texture,
+			"2x1":texture,
+			"2x2":texture,
+			"2x3":texture,
+			"2x4":texture,
+			"2x5":texture,
+			"2x6":texture,
+			"2x7":texture,
+			"2x8":texture,
+			"2x9":texture,
+			"3x0":texture,
+			"3x1":texture,
+			"3x2":texture,
+			"3x3":texture,
+			"3x4":texture,
+			"3x5":texture,
+			"3x6":texture,
+			"3x7":texture,
+			"3x8":texture,
+			"3x9":texture,
+			"4x0":texture,
+			"4x1":texture,
+			"4x2":texture,
+			"4x3":texture,
+			"4x4":texture,
+			"4x5":texture,
+			"4x6":texture,
+			"4x7":texture,
+			"4x8":texture,
+			"4x9":texture,
+			"5x0":texture,
+			"5x1":texture,
+			"5x2":texture,
+			"5x3":texture,
+			"5x4":texture,
+			"5x5":texture,
+			"5x6":texture,
+			"5x7":texture,
+			"5x8":texture,
+			"5x9":texture,
+			"6x0":texture,
+			"6x1":texture,
+			"6x2":texture,
+			"6x3":texture,
+			"6x4":texture,
+			"6x5":texture,
+			"6x6":texture,
+			"6x7":texture,
+			"6x8":texture,
+			"6x9":texture,
+			"7x0":texture,
+			"7x1":texture,
+			"7x2":texture,
+			"7x3":texture,
+			"7x4":texture,
+			"7x5":texture,
+			"7x6":texture,
+			"7x7":texture,
+			"7x8":texture,
+			"7x9":texture,
+			"8x0":texture,
+			"8x1":texture,
+			"8x2":texture,
+			"8x3":texture,
+			"8x4":texture,
+			"8x5":texture,
+			"8x6":texture,
+			"8x7":texture,
+			"8x8":texture,
+			"8x9":texture,
+			"9x0":texture,
+			"9x1":texture,
+			"9x2":texture,
+			"9x3":texture,
+			"9x4":texture,
+			"9x5":texture,
+			"9x6":texture,
+			"9x7":texture,
+			"9x8":texture,
+			"9x9":texture
+		}
 
 		for (var y=0; y < tile_y_count; y++) {
+			row_array = [texture]
 			for (var x=0; x < tile_x_count; x++) {
-				var tile = new PIXI.Sprite(texture)
+				var index = x + "x" + y
+				var tile = new PIXI.Sprite(tiles[index])
 				tile.position.x = (x-1)*tile_size
 				tile.position.y = (y-1)*tile_size
 				tile.height = tile_size
 				tile.width = tile_size
+				tile.key = index
 				myContainer.addChild(tile)
 			}
 		}		
